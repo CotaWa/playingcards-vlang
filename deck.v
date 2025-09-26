@@ -1,0 +1,3 @@
+module playingcards
+
+import rand
