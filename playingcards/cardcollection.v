@@ -2,12 +2,28 @@ module playingcards
 
 import rand
 
+@[params]
+pub struct CardCollectionParams {
+	cards ?[]Card
+	ordered ?bool = false
+	maximum ?int = 52
+}
+
 pub struct CardCollection {
 	pub mut:
 		cards []Card
 		ordered bool
 	pub:
 		maximum int
+}
+
+pub fn initcc(cC CardCollectionParams) ?CardCollection {
+	return CardCollection{
+		cards: cC.cards or { []Card{} }
+		ordered: cC.ordered or { false }
+		maximum: cC.maximum or { 52 }
+	}
+	
 }
 
 pub fn add_cards(mut cC CardCollection, random bool, position int) []Card {

@@ -5,7 +5,7 @@ import rand
 @[params]
 pub struct CardParams {
     input_value ?int
-    input_suit  ?int
+    input_suit ?int
 }
 
 pub struct Card {
