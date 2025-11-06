@@ -17,7 +17,7 @@ pub struct CardCollection {
 		maximum int
 }
 
-pub fn initcc(cC CardCollectionParams) ?CardCollection {
+pub fn (cC CardCollectionParams) initcc() ?CardCollection {
 	return CardCollection{
 		cards: cC.cards or { []Card{} }
 		ordered: cC.ordered or { false }
@@ -26,7 +26,7 @@ pub fn initcc(cC CardCollectionParams) ?CardCollection {
 	
 }
 
-pub fn add_cards(mut cC CardCollection, random bool, position int) []Card {
+pub fn (mut cC CardCollection) add_cards(random bool, position int) []Card {
 	if cC.cards.len > cC.maximum {
 		return cC.cards
 	}
@@ -40,7 +40,7 @@ pub fn add_cards(mut cC CardCollection, random bool, position int) []Card {
 	return cC.cards
 }
 
-pub fn remove_card(mut cC CardCollection, position int) []Card {
+pub fn (mut cC CardCollection) remove_card(position int) []Card {
 	if cC.cards.len == 0 {
 		return cC.cards
 	}
@@ -51,7 +51,7 @@ pub fn remove_card(mut cC CardCollection, position int) []Card {
 	return cC.cards
 }
 
-pub fn shuffle(mut cC CardCollection) []Card {
+pub fn (mut cC CardCollection) shuffle() []Card {
 	if cC.cards.len == 0 {
 		return cC.cards
 	}
@@ -70,7 +70,7 @@ pub fn shuffle(mut cC CardCollection) []Card {
 	return cC.cards
 }
 
-pub fn order_cards(mut cC CardCollection) []Card {
+pub fn (mut cC CardCollection) order_cards() []Card {
 	if cC.cards.len == 0 {
 		return cC.cards
 	}

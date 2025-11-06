@@ -18,7 +18,7 @@ pub:
     card_name string
 }
 
-pub fn card(c CardParams) &Card {
+pub fn (c CardParams) card() &Card {
     if c.input_value == none && c.input_suit == none {
         value, suit := generate_card()
         return &Card{

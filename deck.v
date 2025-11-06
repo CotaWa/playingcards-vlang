@@ -25,17 +25,16 @@ fn generate_deck() []Card {
 	return cards
 }
 
-pub fn draw_card(mut deck Deck) !Card {
+pub fn (mut deck Deck) draw_card() !Card {
 	if deck.drawn >= deck.cards.len {
 		return error('No cards left in the deck')
 	}
-	deck.cards.pop()
 	deck.drawn++
 	deck.remaining--
 	return deck.cards.pop()
 }
 
-pub fn  draw_n(mut deck Deck, n int) !CardCollection {
+pub fn (mut deck Deck) draw_n(n int) !CardCollection {
 	if n > deck.cards.len {
 		return error('Not enough cards left in the deck')
 	}
